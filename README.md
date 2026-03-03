@@ -31,7 +31,7 @@ Successful ICMP echo test between hosts (0% packet loss).
 
 You can download the original Packet Tracer lab file below:
 
-[Download Packet Tracer Lab File](two-lan-routing-lab.pkt)
+[Download Packet Tracer Lab File](lab-file.pkt)
 
 Tested on Cisco Packet Tracer 
 
