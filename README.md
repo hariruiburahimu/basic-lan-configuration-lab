@@ -1,6 +1,6 @@
 # Basic LAN Configuration Lab
 
-日本語版はこちら → [README_jp.md](README_jp.md)
+🇯🇵 日本語版はこちら → [README_jp.md](README_jp.md)
 
 ## Overview
 Implemented a basic Layer 2 LAN topology using Cisco Packet Tracer.
