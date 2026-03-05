@@ -1,6 +1,6 @@
 # 基本的なLAN構築ラボ
 
-英語版はこちら → [README.md](README.md)
+🇬🇧 English version → [README.md](README.md)
 
 ## 概要
 Cisco Packet Tracerを使用して、レイヤー2の基本的なLANトポロジーを構築しました。
