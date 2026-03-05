@@ -1,39 +1,106 @@
-# Basic LAN Configuration Lab
+# VLAN Network Lab
 
-🇯🇵 日本語版はこちら → [README_jp.md](README_jp.md)
+🇯🇵 日本語版はこちら → [README_JP.md](README_JP.md)
 
 ## Overview
-Implemented a basic Layer 2 LAN topology using Cisco Packet Tracer.
+
+This lab demonstrates basic VLAN configuration on a Layer 2 switch using Cisco Packet Tracer.
+
+Two VLANs are created to segment the network into separate broadcast domains. Devices within the same VLAN can communicate with each other, while devices in different VLANs cannot communicate without a Layer 3 device such as a router.
 
 ## Topology
-- 2 End Devices (PC0, PC1)
-- 1 Cisco 2960 Switch
-- Copper Straight-Through connections
 
-## IP Addressing
-PC0: 192.168.1.10 /24  
-PC1: 192.168.1.20 /24  
+1 Cisco 2960 Switch  
+4 PCs  
+
+PC0 and PC1 are assigned to VLAN 10.  
+PC2 and PC3 are assigned to VLAN 20.
+
+## Network Design
+
+VLAN 10 – SALES  
+Network: 192.168.10.0/24
+
+VLAN 20 – IT  
+Network: 192.168.20.0/24
+
+## Devices
+
+- Cisco 2960 Switch
+- 4 PCs
+
+## PC Configuration
+
+PC0  
+IP Address: 192.168.10.10  
+Subnet Mask: 255.255.255.0  
+
+PC1  
+IP Address: 192.168.10.11  
+Subnet Mask: 255.255.255.0  
+
+PC2  
+IP Address: 192.168.20.10  
+Subnet Mask: 255.255.255.0  
+
+PC3  
+IP Address: 192.168.20.11  
+Subnet Mask: 255.255.255.0  
+
+(Default gateway is not required in this lab.)
+
+## Switch VLAN Configuration
+enable
+configure terminal
+
+vlan 10
+name SALES
+exit
+
+vlan 20
+name IT
+exit
+
+interface range fastEthernet0/1-2
+switchport mode access
+switchport access vlan 10
+exit
+
+interface range fastEthernet0/3-4
+switchport mode access
+switchport access vlan 20
+exit
 
 ## Verification
-Successful ICMP echo test between hosts (0% packet loss).
+
+Test within the same VLAN:
+ping 192.168.10.11
+Reply from 192.168.10.11
+
+Test between different VLANs:
+ping 192.168.20.10
+Request timed out
+
+## Result
+
+Devices within the same VLAN can communicate successfully.
+
+Devices in different VLANs cannot communicate without routing.
+
+This lab demonstrates VLAN-based network segmentation.
 
 ## Screenshot
 
-![LAN Topology and Verification](lan-topology-and-ping-verification.png)
+![Network Screenshot](topology_ping_test.png)
 
-## Skills Demonstrated
-- Basic LAN design
-- Static IPv4 configuration
-- Connectivity troubleshooting
-- Packet-level verification
+## Lab File
 
-## Lab File Download
+Download the Packet Tracer lab file:
 
-You can download the original Packet Tracer lab file below:
-
-[Download Packet Tracer Lab File](basic-lan-configuration-lab.pkt)
+[vlan-network-lab.pkt](vlan-network-lab.pkt)
 
 Tested on Cisco Packet Tracer 
 
 ## License
+
 Apache License 2.0
